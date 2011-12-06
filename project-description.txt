@@ -1,0 +1,72 @@
+CS 340 - Project 2
+Classes and Operator Overloading
+
+Due date: Tuesday September 27, Thurday, September 29, 2011 at 11:59 pm
+
+For this assignment you are write a library "Matrix.h" that will be used by others. The library will contain the class Matrix. This library should be accompanied by a source code file "Matrix.cpp". A program using the Matrix class library should only include the Matrix.h file and should link to the object file of Matrix.o during the address resolution step of compilation (i.e. at link time).
+
+The class: Matrix
+The class Matrix will be a two dimensional matrix of real (floating point) values. The storage space for this class must be dynamic. Since dynamic two dimensional arrays seem to give people a fair amount of trouble, you may wish to synthesize a two dimensional array with a single dimensional array.
+
+You must dynamically allocated the space for the array yourself using C++ pointers. You may NOT use Standard Library elements similar to the Vector class. Such code will receive a score of zero for this project!
+
+The operators to overload are as follows:
+
+    !	transpose of the matrix
+
+    If matrix T is the transpose of matrix A, the value at position T[i][j] = A[j][i]. The dimensions of A and T will be exactly opposite. That is, the number of rows in A will equal the number of columns in T and the number of columns in A will equal the number of rows in T.
+    *	matrix multiplication (the cross product)
+
+    When multiplying matrices A and B, the dimensions must be exactly opposite. That is, the number of rows in A must equal the number of columns in B and the number of columns in A must equal the number of rows in B. If matrix R is the result of adding A and B, the value at R[i][j] = Sum of (A[i][1]*B[1][j] + A[i][2]*B[2][j] + ... + A[i][m]*B[m][j]), where m is the number of columns in A. Note the A*B is not the same as B*A.
+    +	matrix addition
+
+    When adding matrices A and B, the dimensions must be the same. That is the number of rows in A must equal the number of rows in B and the number of columns in A must equal the number of columns in B. If matrix R is the result of adding A and B, the value at R[i][j] = A[i][j] + B[i][j].
+    *	scalar multiplication (the dot product)
+
+    This is when a singular value will be multiplied by a matrix or a matrix will be multiplied by a singular. The resulting matrix R will have the same dimensions as the original matrix A and R[i][j] = value*A[i][j].
+    =	assignment
+
+    The left-hand side is to be made to be an exact copy of the right-hand side. Make sure the assignment operation deallocates any dynamic memory that had been allocated to the left-hand side matrix.
+    ==	equality
+
+    For two matrices A and B to be equal, they must have the same dimensions and A[i][j] must equal B[i][j] for all possible combinations of i and j.
+    !=	inequality
+
+    Two matrices A and B are not equal if they have different dimensions or A[i][j] is not equal to B[i][j] for any combination of i and j.
+    <<	Stream Output
+
+    You are to first print the dimensions of the matrix (number of rows, then number of columns) followed by the values in the matrix list one row at a time.
+    >>	Stream Input
+
+    The first two values read indicate the number of rows followed by the number of columns. After this all of the values from the matrix will be read in row by row.
+
+The overloaded operator * will perform two different operations based on the type of the operands. If both operands are of type Matrix, then matrix multiplication will be performed. If one operand is of type real and the other is of type Matrix, then scalar multiplication will be performed. For the matrix multiplication and addition, the code must validate the two matrices are of compatable dimensions to perform the operation. If they are not of compatable dimensions, print an error message.
+
+The class is also to have the following:
+
+    The class is to have a method access() that is to return the reference to a position in the matrix. This method will take two integer parameters that correspond to the row and column of the position in the matrix. This method is to be used for both storage and retrieval of values in the matrix. This method should print an error message if either integer parameter is out of range.
+
+    The class is to have a method getRowCount() that is to return the number of rows in the matrix.
+
+    The class is to have a method getColCount() that is to return the number of columns in the matrix.
+
+    The class is to have a constructor that takes a null terminated character array that will be the name of a file. This file will contain the input needed to initialize a matrix. This contructor could almost just open the file and then use the >> operator to read in the information.
+
+    The class is to have another constructor that takes two integer values. These values indicate the number of rows and columns in the matrix. All values in the matrix are to be initialized to zero.
+
+Write any other constructors, destructor or methods that you feel are necessary.
+
+The following driver programs should be used test out your library:
+
+    MatrixMain.cpp
+    matrix5x4.data 
+
+Note that the TA may use other driver programs to test your library. So, only being able to successfully compiler and run the above program does not guarentee your library is correct.
+
+Your program must be written in good programming style. This includes (but is not limited to) meaningful identifier names, a file header at the beginning of each source code file, a function header at the beginning of the function, proper use of blank lines and indentation to aide in the reading of your code, explanatory "value-added" in-line comments, etc.
+
+The work you turn in must be 100% your own. You are not allowed to share code with any other person (inside this class or not). You may discuss the project with other persons; however, you may not show any code you write to another person nor may you look at any other person's written code.
+
+You are also to write a one to two page program description. This write up must be submitted with your program and be in ASCII text format. This description is to explain your internal data structures, code structures and the algorithms used in your program. Remember, this program description will be read by another student when the critiques are done for this assignment. Often the title of "readme" is used for these types of documents.
+
+You are to submit this project using the submission link in the assignment page of the CS 340 Blackboard section. 
